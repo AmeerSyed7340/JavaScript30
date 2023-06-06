@@ -38,18 +38,62 @@
     
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
+    const filteredAge = inventors.filter(inventor => inventor.year >=  1500 && inventor.year < 1600);
+    const mapped = filteredAge.map(inventor =>{
+      return {
+        fullName: `${inventor.first} ${inventor.last}`,
+        year: inventor.year
+      }
+    })
+    console.table(mapped);
 
+    const nameWithA = inventors.filter(inventor => inventor.first[0] === 'K');
+    const mappedNameWithA = nameWithA.map(inventor => {
+      return {
+        fullName: `${inventor.first} ${inventor.last}`
+      }
+    })
+    console.table(mappedNameWithA);
+   
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
+    const fullName = inventors.map(inventor => {
+      return {
+        first: inventor.first,
+        last: inventor.last
+      }
+    });
+    console.table(fullName);
 
+    const modify = inventors.map(inventor =>{
+      const fullName = `${inventor.first} ${inventor.last}`;
+      return fullName;
+    }).sort();
+    console.table(modify);
+
+    const nineTeenthCentury = inventors.map(inventor => {
+      const fullName = `${inventor.first} ${inventor.last}`;
+      const bornIn19 = inventor.year >= 1900 && inventor.year < 2000;
+      const diedIn19 = inventor.passed >= 1900 && inventor.passed < 2000;
+      return{
+        fullName: fullName,
+        Born: inventor.year,
+        BornIn19th: bornIn19,
+        PassedAway: inventor.passed,
+        DiedIn19th: diedIn19
+      }
+    }).sort((a, b) => {
+      return a.PassedAway - b.PassedAway;
+    });
+    console.table(nineTeenthCentury);
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
-
+ 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
-
+    
     // 5. Sort the inventors by years lived
-
+   
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
