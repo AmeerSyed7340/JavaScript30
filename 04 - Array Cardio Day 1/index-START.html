@@ -88,10 +88,39 @@
     console.table(nineTeenthCentury);
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
- 
+    console.log('Here');
+    console.table(inventors);
+    const sortInventors = inventors.sort((a,b) => a.year - b.year);
+    console.table(sortInventors);
+    const mp = sortInventors.map(inventor =>{
+      return {
+        first: inventor.first,
+        last: inventor.last
+      }
+    });
+    console.table(mp);
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
-    
+    const red = inventors.reduce((prev, current, currentIndex, array) =>{
+      console.log(`accumulator: ${prev}, currentValue: ${JSON.stringify(current)}, currentIndex: ${currentIndex}, array: ${JSON.stringify(array)}`);
+      return prev + current.year;
+    }, 0);
+    console.log(red);
+
+    const dat = [
+  { name: 'John', age: 25, salary: 50000 },
+  { name: 'Jane', age: 30, salary: 60000 },
+  { name: 'Mike', age: 35, salary: 70000 }
+];
+
+const totalSalary = dat.reduce((accumulator, currentValue, currentIndex, array) => {
+  console.log(`accumulator: ${accumulator}, currentValue: ${currentValue}, currentIndex: ${currentIndex}, array: ${array}`);
+  return accumulator + currentValue.salary;
+}, 0);
+
+console.log(totalSalary); // Output: 180000
+
+
     // 5. Sort the inventors by years lived
    
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
